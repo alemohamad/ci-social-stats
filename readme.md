@@ -1,10 +1,10 @@
-# CodeIgniter Helper: Count URL shares
+# CodeIgniter Library: Count URL shares
 
 **ci-social-stats**
 
-## About this helper
+## About this library
 
-This CodeIgniter's Helper is used to get the count of shares of an URL from social networks (Twitter, Facebook and Google+).  
+This CodeIgniter's Library is used to get the count of shares of an URL from social networks (Twitter, Facebook and Google+).  
 Its usage is recommended for CodeIgniter 2 or greater.  
 
 *Note:* I recommend that you cache the result, so you won't exceed the limit of requests to each of the social networks. Ideally, do a query every 10 minutes or so.
