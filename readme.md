@@ -7,7 +7,7 @@
 This CodeIgniter's Helper is used to get the count of shares of an URL from social networks (Twitter, Facebook and Google+).  
 Its usage is recommended for CodeIgniter 2 or greater.  
 
-__Note:__ I recommend that you cache the result, so you won't exceed the limit of requests to each of the social networks. Ideally, do a query every 10 minutes or so.
+*Note:* I recommend that you cache the result, so you won't exceed the limit of requests to each of the social networks. Ideally, do a query every 10 minutes or so.
 
 ## Usage
 
