@@ -5,13 +5,15 @@ class SocialStats
 
     function get_tweets( $url )
     {
+        $url = urlencode($url);
+
         $json_string = file_get_contents( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $url );
         $json = json_decode($json_string, true);
 
         return intval( $json['count'] );
     }
  
-    function get_shares( $url )
+    function get_fb_shares( $url )
     {
         $json_string = file_get_contents('http://graph.facebook.com/?ids=' . $url);
     	$json = json_decode($json_string, true);
@@ -31,6 +33,37 @@ class SocialStats
         curl_close ($curl);
         $json = json_decode($curl_results, true);
         return intval( $json[0]['result']['metadata']['globalCounts']['count'] );
+    }
+
+    function get_pins( $url )
+    {
+        $url = urlencode($url);
+
+        $json_string = file_get_contents( 'http://api.pinterest.com/v1/urls/count.json?callback=pinterest&url=' . $url );
+        $json_string = preg_replace('/^pinterest\((.*)\)$/', "\\1", $json_string);
+        $json = json_decode($json_string, true);
+
+        return intval( $json['count'] );
+    }
+
+    function get_in_shares( $url )
+    {
+        $url = urlencode($url);
+
+        $json_string = file_get_contents( 'http://www.linkedin.com/countserv/count/share?format=json&url=' . $url );
+        $json = json_decode($json_string, true);
+
+        return intval( $json['count'] );
+    }
+
+    function get_stumble_views( $url )
+    {
+        $url = urlencode($url);
+
+        $json_string = file_get_contents( 'http://www.stumbleupon.com/services/1.01/badge.getinfo?url=' . $url );
+        $json = json_decode($json_string, true);
+
+        return intval( $json['result']['views'] );
     }
 
 }
