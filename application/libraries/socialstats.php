@@ -65,6 +65,16 @@ class SocialStats
 
         return intval( $json['result']['views'] );
     }
+    
+     function get_tumblr_shares($url)
+    {
+        $url = urlencode($url);
+
+        $json_string = file_get_contents( 'https://api.tumblr.com/v2/share/stats?url=' . $url );
+        $json = json_decode($json_string, true);
+
+        return intval( $json['response']['note_count'] );
+    }
 
 }
 
