@@ -22,6 +22,7 @@ $googleplus_shares  = $this->socialstats->get_plusones($url);
 $pinterest_shares   = $this->socialstats->get_pins($url);
 $linkedin_shares    = $this->socialstats->get_in_shares($url);
 $stumbleupon_shares = $this->socialstats->get_stumble_views($url);
+$tumblr_shares      = $this->socialstats->get_tumblr_shares($url);
 ```
 
 ![Ale Mohamad](http://codeigniter.alemohamad.com/images/logo2012am.png)
