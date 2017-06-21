@@ -7,7 +7,7 @@ class SocialStats
     {
         $url = urlencode($url);
 
-        $json_string = file_get_contents( 'http://urls.api.twitter.com/1/urls/count.json?url=' . $url );
+        $json_string = file_get_contents( 'http://opensharecount.com/count.json?url=' . $url );
         $json = json_decode($json_string, true);
 
         return intval( $json['count'] );
@@ -18,7 +18,7 @@ class SocialStats
         $json_string = file_get_contents('http://graph.facebook.com/?ids=' . $url);
     	$json = json_decode($json_string, true);
 
-        return intval( $json[$url]['shares'] );
+        return intval( $json[$url]['share']['share_count']);
     }
 
     function get_plusones( $url )
@@ -64,6 +64,16 @@ class SocialStats
         $json = json_decode($json_string, true);
 
         return intval( $json['result']['views'] );
+    }
+    
+     function get_tumblr_shares($url)
+    {
+        $url = urlencode($url);
+
+        $json_string = file_get_contents( 'https://api.tumblr.com/v2/share/stats?url=' . $url );
+        $json = json_decode($json_string, true);
+
+        return intval( $json['response']['note_count'] );
     }
 
 }
